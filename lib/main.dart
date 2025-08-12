@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_flutter/feat/core/init/app_init.dart';
+import 'package:recipe_app_flutter/feat/core/widgets/navigation_helper/navigation_helper.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +11,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    AppInit.initDeviceSize(context);
+    return MaterialApp(
+      title: 'Recipe App',
+      navigatorKey: Navigation.navigationKey,
     );
   }
 }
