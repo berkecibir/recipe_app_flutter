@@ -11,6 +11,9 @@ enum DeviceSpacing {
   /// Bu değer 5
   xsmall(AppSizes.xSmall),
 
+  /// Bu değer 8
+  compact(AppSizes.compact),
+
   /// Bu değer 10
   small(AppSizes.small),
 
@@ -20,8 +23,11 @@ enum DeviceSpacing {
   /// Bu değer 20
   large(AppSizes.large),
 
+  /// Bu değer 25
+  xlarge(AppSizes.xLarge),
+
   /// Bu değer 30
-  xlarge(AppSizes.xLarge);
+  xxLarge(AppSizes.xxLarge);
 
   final double value;
   const DeviceSpacing(this.value);

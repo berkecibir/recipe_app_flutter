@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app_flutter/feat/core/init/app_init.dart';
 import 'package:recipe_app_flutter/feat/core/routes/app_routes.dart';
 import 'package:recipe_app_flutter/feat/core/widgets/navigation_helper/navigation_helper.dart';
+import 'package:recipe_app_flutter/feat/presentation/pages/auth/page/sign_in_page.dart';
 import 'package:recipe_app_flutter/feat/providers/bloc_provider_set_up.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Recipe App',
+        initialRoute: SignUpPage.signInId,
         routes: AppRoutes.routes,
         navigatorKey: Navigation.navigationKey,
       ),

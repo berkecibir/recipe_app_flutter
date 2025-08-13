@@ -19,8 +19,14 @@ enum DevicePadding {
   ///This value is 20
   large(AppSizes.large),
 
+  /// This value is 25
+  xlarge(AppSizes.xLarge),
+
   ///This value is 30
-  xlarge(AppSizes.xLarge);
+  xxlarge(AppSizes.xxLarge),
+
+  /// This value is 32
+  huge(AppSizes.huge);
 
   final double value;
   const DevicePadding(this.value);
