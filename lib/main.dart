@@ -4,7 +4,6 @@ import 'package:recipe_app_flutter/feat/core/config/theme/app_theme.dart';
 import 'package:recipe_app_flutter/feat/core/init/app_init.dart';
 import 'package:recipe_app_flutter/feat/core/routes/app_routes.dart';
 import 'package:recipe_app_flutter/feat/core/widgets/navigation_helper/navigation_helper.dart';
-import 'package:recipe_app_flutter/feat/presentation/pages/auth/page/sign_in_page.dart';
 import 'package:recipe_app_flutter/feat/presentation/pages/auth/page/sign_up_page.dart';
 import 'package:recipe_app_flutter/feat/providers/bloc_provider_set_up.dart';
 
