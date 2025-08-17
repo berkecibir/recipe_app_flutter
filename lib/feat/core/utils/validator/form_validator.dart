@@ -11,7 +11,7 @@ class FormValidator {
       return AppTexts.emptyEmailMessage;
     }
     final regexp = RegExp(AppTexts.authRegExp);
-    return regexp.hasMatch(email) ? null : AppTexts.notDefiendEmailMessage;
+    return regexp.hasMatch(email) ? null : AppTexts.notDefinedEmailMessage;
   }
   // password validate
 

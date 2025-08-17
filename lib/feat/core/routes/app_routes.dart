@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_flutter/feat/presentation/home/page/home_page.dart';
 import 'package:recipe_app_flutter/feat/presentation/pages/auth/page/sign_in_page.dart';
+import 'package:recipe_app_flutter/feat/presentation/pages/home/page/home_page.dart';
+import 'package:recipe_app_flutter/feat/presentation/pages/auth/page/sign_up_page.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
-    SignUpPage.signInId: (context) => const SignUpPage(),
+    SignUpPage.signUpId: (context) => const SignUpPage(),
+    SignInPage.signInId: (context) => const SignInPage(),
     HomePage.homeId: (context) => const HomePage(),
   };
 }

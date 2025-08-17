@@ -13,7 +13,7 @@ class AppTexts {
   // form field texts
   static const String formValidatorMessage = 'This field cannot be empty';
   static const String emptyEmailMessage = 'Email cannot be empty';
-  static const String notDefiendEmailMessage = 'Email is not defined correctly';
+  static const String notDefinedEmailMessage = 'Email is not defined correctly';
   static const String emptyPasswordMessage = 'Password cannot be empty';
   static String minLengthPasswordMessage(int minLength) =>
       'Password must be at least $minLength characters long';
@@ -33,4 +33,10 @@ class AppTexts {
   // sign in page texts
   static const String welcome = 'Welcome';
   static const String signUpToContinue = 'Sign Up to continue to Recipe App';
+
+  // auth cubit texts
+  static const String reqresEmail = 'eve.holt@reqres.in';
+  static const String emailNotRegistered = 'Email is not registered';
+  static const String signUpSuccess = 'Sign up successful:';
+  static const String anErrorOccurred = 'An error occurred : ';
 }

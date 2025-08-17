@@ -3,7 +3,7 @@ import 'package:recipe_app_flutter/feat/core/border/app_border_radius.dart';
 import 'package:recipe_app_flutter/feat/core/sizes/app_sizes.dart';
 import 'package:recipe_app_flutter/feat/core/utils/constants/app_texts.dart';
 import 'package:recipe_app_flutter/feat/core/utils/validator/form_validator.dart';
-import 'package:recipe_app_flutter/feat/presentation/cubit/cubit/auth_cubit.dart';
+import 'package:recipe_app_flutter/feat/presentation/cubit/auth/auth_cubit.dart';
 
 class AuthFormWidget extends StatelessWidget {
   final String? Function(String?)? validator;
