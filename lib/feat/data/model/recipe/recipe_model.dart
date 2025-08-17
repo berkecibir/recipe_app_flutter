@@ -35,7 +35,7 @@ class RecipeModel {
     required this.mealType,
   });
 
-  // Helper fonksiyonlar tipi güvenli parse için
+  // Helper functions for type-safe parsing
   static double _toDouble(dynamic v) {
     if (v == null) return 0.0;
     if (v is double) return v;

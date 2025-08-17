@@ -17,14 +17,14 @@ class RecipeService implements IRecipeService {
   @override
   Future<RecipeResponse> fetchRecipes({int? limit, int? skip}) async {
     try {
-      String url = _baseUrl;
-      if (limit != null || skip != null) {
-        url += '?';
-        if (limit != null) url += 'limit=$limit';
-        if (skip != null) url += '${limit != null ? '&' : ''}skip=$skip';
-      }
+      final queryParameters = <String, dynamic>{};
+      if (limit != null) queryParameters['limit'] = limit;
+      if (skip != null) queryParameters['skip'] = skip;
 
-      final response = await _dio.get(url);
+      final response = await _dio.get(
+        '',
+        queryParameters: queryParameters.isNotEmpty ? queryParameters : null,
+      );
 
       if (response.statusCode == 200) {
         return RecipeResponse.fromJson(response.data);
