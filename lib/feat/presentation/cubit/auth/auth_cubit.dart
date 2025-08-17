@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_app_flutter/feat/core/duration/app_duration.dart';
+import 'package:recipe_app_flutter/feat/core/utils/constants/app_texts.dart';
 import 'package:recipe_app_flutter/feat/core/widgets/navigation_helper/navigation_helper.dart';
 import 'package:recipe_app_flutter/feat/data/model/auth/auth_register_model.dart';
 
 import 'package:recipe_app_flutter/feat/data/service/auth/user_service.dart';
-import 'package:recipe_app_flutter/feat/presentation/home/page/home_page.dart';
+import 'package:recipe_app_flutter/feat/presentation/pages/home/page/home_page.dart';
 
 part 'auth_state.dart';
 
@@ -41,17 +42,29 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> signUp() async {
+  Future<void> signUp(BuildContext context) async {
     if (!(formKey.currentState?.validate() ?? false)) return; // ✅ form kontrolü
 
     emit(AuthLoading());
     try {
+      final email = emailController.text.trim();
+      if (email != AppTexts.reqresEmail) {
+        emit(AuthError(AppTexts.emailNotRegistered));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppTexts.emailNotRegistered),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
+
       final model = AuthRegisterModel(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
       final response = await _authService.signUp(model);
-      emit(AuthSuccess('Sign in successful: ${response.token}'));
+      emit(AuthSuccess('${AppTexts.signUpSuccess} ${response.token}'));
       // Clear the controllers after successful sign up
       emailController.clear();
       passwordController.clear();
@@ -61,7 +74,7 @@ class AuthCubit extends Cubit<AuthState> {
       // Use NavigationHelper to navigate to HomePage
       await Navigation.pushReplace(page: HomePage());
     } catch (e) {
-      emit(AuthError('An error occured : $e'.toString()));
+      emit(AuthError('${AppTexts.anErrorOccurred} $e'.toString()));
     }
   }
 }

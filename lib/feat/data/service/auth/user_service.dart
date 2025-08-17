@@ -22,14 +22,14 @@ class UserService implements IUserService {
         throw Exception('Failed to register: ${response.statusCode}');
       }
     } on DioException catch (e) {
-      debugPrint('Dio Hatası oluştu : $e');
+      debugPrint('Dio error occurred: $e');
       if (e.response != null) {
         debugPrint('Error data: ${e.response?.data}');
       }
       throw Exception('DioException occurred during registration.');
     } catch (e) {
       // Catch any other unexpected errors
-      debugPrint('Occured unexpected error: $e');
+      debugPrint('Occurred unexpected error: $e');
       throw Exception('An unexpected error occurred during registration.');
     }
   }
