@@ -43,7 +43,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signUp(BuildContext context) async {
-    if (!(formKey.currentState?.validate() ?? false)) return; // ✅ form kontrolü
+    if (!(formKey.currentState?.validate() ?? false)) return; //  form kontrolü
 
     emit(AuthLoading());
     try {
