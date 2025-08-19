@@ -4,10 +4,8 @@ import 'package:recipe_app_flutter/feat/core/duration/app_duration.dart';
 import 'package:recipe_app_flutter/feat/core/utils/constants/app_texts.dart';
 import 'package:recipe_app_flutter/feat/core/widgets/navigation_helper/navigation_helper.dart';
 import 'package:recipe_app_flutter/feat/data/model/auth/auth_register_model.dart';
-
 import 'package:recipe_app_flutter/feat/data/service/auth/user_service.dart';
 import 'package:recipe_app_flutter/feat/presentation/pages/home/page/home_page.dart';
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
@@ -48,11 +46,24 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final email = emailController.text.trim();
+      final password = passwordController.text.trim();
+
       if (email != AppTexts.reqresEmail) {
         emit(AuthError(AppTexts.emailNotRegistered));
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(AppTexts.emailNotRegistered),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
+
+      if (password != AppTexts.reqresPassword) {
+        emit(AuthError(AppTexts.wrongPassword));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppTexts.wrongPassword),
             backgroundColor: Colors.red,
           ),
         );

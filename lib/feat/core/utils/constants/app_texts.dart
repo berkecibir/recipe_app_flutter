@@ -36,7 +36,9 @@ class AppTexts {
 
   // auth cubit texts
   static const String reqresEmail = 'eve.holt@reqres.in';
+  static const String reqresPassword = 'pistol';
   static const String emailNotRegistered = 'Email is not registered';
+  static const String wrongPassword = 'Wrong password';
   static const String signUpSuccess = 'Sign up successful:';
   static const String anErrorOccurred = 'An error occurred : ';
 }
