@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> with HomePageMixin {
       appBar: CustomAppBar.homeAppBar(),
       body: GestureDetector(
         onTap: () {
-          // Dismiss keyboard when tapping outside
           dismissKeyboard();
         },
         child: BlocBuilder<HomeCubit, HomeState>(

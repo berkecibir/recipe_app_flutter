@@ -24,8 +24,8 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeError(error: 'No recipes found'));
         return;
       }
-      recipes = response.recipes; // 👈 eksik olan kısım
-      filteredRecipes = recipes; // Initialize filtered recipes
+      recipes = response.recipes;
+      filteredRecipes = recipes;
       emit(HomeSucces("Recipes loaded successfully"));
     } catch (e) {
       emit(HomeError(error: e.toString()));

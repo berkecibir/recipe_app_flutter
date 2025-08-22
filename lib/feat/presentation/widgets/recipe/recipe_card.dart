@@ -20,13 +20,10 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Dismiss keyboard when tapping on card
         FocusScope.of(context).unfocus();
 
-        // Execute custom onTap if provided
         onTap?.call();
 
-        // Default behavior - navigate to recipe details
         debugPrint("Recipe tapped: ${recipe.name} and index: ${index + 1}");
       },
       child: Card(
