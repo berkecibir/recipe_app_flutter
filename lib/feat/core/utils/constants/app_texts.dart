@@ -41,4 +41,7 @@ class AppTexts {
   static const String wrongPassword = 'Wrong password';
   static const String signUpSuccess = 'Sign up successful:';
   static const String anErrorOccurred = 'An error occurred : ';
+
+  // app bar texts
+  static const String homeAppBarTitle = 'Recipes';
 }
