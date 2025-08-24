@@ -3,6 +3,7 @@ class AppTexts {
   static const String signInPage = 'sign_in';
   static const String signUpPage = 'sign_up';
   static const String homePageId = 'home';
+  static const String favoritesPageId = 'favorites';
 
   // json keys for auth
   static const String emailKey = 'email';
@@ -44,4 +45,5 @@ class AppTexts {
 
   // app bar texts
   static const String homeAppBarTitle = 'Recipes';
+  static const String favoritesAppBarTitle = 'Favorites';
 }
