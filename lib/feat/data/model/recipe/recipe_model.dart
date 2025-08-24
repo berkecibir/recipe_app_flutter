@@ -15,6 +15,7 @@ class RecipeModel {
   final double rating;
   final int reviewCount;
   final List<String> mealType;
+  final bool isFavorite;
 
   RecipeModel({
     required this.id,
@@ -33,7 +34,49 @@ class RecipeModel {
     required this.rating,
     required this.reviewCount,
     required this.mealType,
+    this.isFavorite = false,
   });
+
+  // CopyWith method for creating updated instances
+  RecipeModel copyWith({
+    int? id,
+    String? name,
+    List<String>? ingredients,
+    List<String>? instructions,
+    int? prepTimeMinutes,
+    int? cookTimeMinutes,
+    int? servings,
+    String? difficulty,
+    String? cuisine,
+    int? caloriesPerServing,
+    List<String>? tags,
+    int? userId,
+    String? image,
+    double? rating,
+    int? reviewCount,
+    List<String>? mealType,
+    bool? isFavorite,
+  }) {
+    return RecipeModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      ingredients: ingredients ?? this.ingredients,
+      instructions: instructions ?? this.instructions,
+      prepTimeMinutes: prepTimeMinutes ?? this.prepTimeMinutes,
+      cookTimeMinutes: cookTimeMinutes ?? this.cookTimeMinutes,
+      servings: servings ?? this.servings,
+      difficulty: difficulty ?? this.difficulty,
+      cuisine: cuisine ?? this.cuisine,
+      caloriesPerServing: caloriesPerServing ?? this.caloriesPerServing,
+      tags: tags ?? this.tags,
+      userId: userId ?? this.userId,
+      image: image ?? this.image,
+      rating: rating ?? this.rating,
+      reviewCount: reviewCount ?? this.reviewCount,
+      mealType: mealType ?? this.mealType,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 
   // Helper functions for type-safe parsing
   static double _toDouble(dynamic v) {
@@ -42,6 +85,7 @@ class RecipeModel {
     if (v is int) return v.toDouble();
     if (v is num) return v.toDouble();
     if (v is String) return double.tryParse(v) ?? 0.0;
+
     return 0.0;
   }
 
@@ -51,12 +95,14 @@ class RecipeModel {
     if (v is double) return v.toInt();
     if (v is num) return v.toInt();
     if (v is String) return int.tryParse(v) ?? 0;
+
     return 0;
   }
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) {
     List<String> toStringList(dynamic src) {
       if (src == null) return <String>[];
+
       return (src as List).map((e) => e.toString()).toList();
     }
 
@@ -77,6 +123,7 @@ class RecipeModel {
       rating: _toDouble(json['rating']),
       reviewCount: _toInt(json['reviewCount']),
       mealType: toStringList(json['mealType']),
+      isFavorite: json['isFavorite'] as bool? ?? false,
     );
   }
 
@@ -97,5 +144,6 @@ class RecipeModel {
     'rating': rating,
     'reviewCount': reviewCount,
     'mealType': mealType,
+    'isFavorite': isFavorite,
   };
 }

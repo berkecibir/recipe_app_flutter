@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app_flutter/feat/core/border/app_border_radius.dart';
 import 'package:recipe_app_flutter/feat/core/sizes/app_sizes.dart';
 import 'package:recipe_app_flutter/feat/core/widgets/device_padding/device_padding.dart';
 import 'package:recipe_app_flutter/feat/data/model/recipe/recipe_model.dart';
+import 'package:recipe_app_flutter/feat/presentation/cubit/favorites/favorites_cubit.dart';
 
 class RecipeCard extends StatelessWidget {
   final RecipeModel recipe;
@@ -37,6 +39,7 @@ class RecipeCard extends StatelessWidget {
           leading: _buildRecipeImage(),
           title: _buildRecipeTitle(context),
           subtitle: _buildRecipeDetails(),
+          trailing: _buildFavoriteIcon(context),
         ),
       ),
     );
@@ -79,6 +82,25 @@ class RecipeCard extends StatelessWidget {
         Text("Cuisine: ${recipe.cuisine}"),
         Text("⭐ ${recipe.rating}  (${recipe.reviewCount} reviews)"),
       ],
+    );
+  }
+
+  Widget _buildFavoriteIcon(BuildContext context) {
+    return BlocBuilder<FavoritesCubit, FavoritesState>(
+      builder: (context, state) {
+        final favoritesCubit = context.read<FavoritesCubit>();
+        final isFavorite = favoritesCubit.isFavorite(recipe.id);
+
+        return IconButton(
+          icon: Icon(
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+            color: isFavorite ? Colors.red : Colors.grey,
+          ),
+          onPressed: () {
+            favoritesCubit.toggleFavorite(recipe);
+          },
+        );
+      },
     );
   }
 }
